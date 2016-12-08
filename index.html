@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        body { margin:0; padding:0; 
+            font-family: lato;}
+        #map { position:absolute; top:0; bottom:0; width:50%; }
+        #infobox { position:absolute; top:0; bottom:0; right:0; width:50%; }
+        #ladbsframe {position:absolute; width:100%; height:100%}
+        #ladbsbox {position:relative; width:99%; height:75%; bottom:0;}
+        #info {
+            position:relative;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, .15);
+            width:90%;
+            height:20%
+        }
+        @media screen and (max-width: 40em) {
+        #info{font-size: xx-small;}
+        }
+        
+        .mapboxgl-popup {
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+        .legend {
+        background-color: #000;
+        border-radius: 3px;
+        bottom: 30px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        color:white;
+        padding: 10px;
+        position: absolute;
+        left: 10px;
+        z-index: 1;
+        }
+
+.legend h4 {
+    margin: 0 0 10px;
+}
+
+.legend div span {
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    margin-right: 5px;
+    width: 10px;
+}
+    </style>
+</head>
+<body>
+<div id='map'></div>
+<div id='state-legend' class='legend'>
+    <h4>Permit Type</h4>
+    <div><span style='background-color: #c51b7d'></span>2016</div>
+    <div><span style='background-color: #e9a3c9'></span>2015</div>
+    <div><span style='background-color: #fde0ef'></span>2014</div>
+    <div><span style='background-color: #f7f7f7'></span>2013</div>
+    <div><span style='background-color: #e6f5d0'></span>2012</div>
+    <div><span style='background-color: #a1d76a'></span>2011</div>
+    <div><span style='background-color: #4d9221'></span>2010</div>
+</div>
+<div id='infobox'>
+    <div id="info">
+        <h1>lacity exploration 12</h1>
+        <p>This exploratory map looks at Building and Safety Code Encforcement Cases from 2010-2016. Each circle represents a reported case, with the circle size and color is based on the year generated. A script was made to load permit information from the Los Angeles Building and Safety's Permit and Inspection Report</p>
+        <p>Click on a circle to identify the case and load the LADBS window | <a href="https://github.com/cityhubla/lacity_exploration_12">Code on GITHUB</a></p>
+        <p>made by <a href="https://twitter.com/theworksla">Omar Ureta</a></p>
+    </div>
+    <div id="ladbsbox"></div>
+    </div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiY3J1emluNzN2dyIsImEiOiJjaW80MHJvNzgwMWcwdmFrams0OHAxaWozIn0.6TXveIiYaYPFdf8QTO6Ssw';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/cruzin73vw/cioaeibbi003xainhxozbxbks', //stylesheet location
+    zoom: 13, // starting zoom
+    center:[-118.2583,34.0437],
+    minZoom:10,
+    hash:true
+});
+
+
+var url = 'data/ladbs_enforcement_cases.geojson';
+map.on('load', function () {
+
+    map.addSource('ladbscases', { type: 'geojson', data: url });
+    map.addLayer({
+        "id": "2016",
+        "type": "circle",
+        "source": "ladbscases",
+                "paint": {
+                    'circle-radius': {
+                        "stops": [
+                            [{zoom: 10, value: 0}, 2],
+                            [{zoom: 15, value: 0}, 16]
+                          ]
+                    },
+                    'circle-color': '#c51b7d',
+                    'circle-opacity':.8
+                },
+        "filter":["==","year",2016]
+    });
+    
+    map.addLayer({
+        "id": "2015",
+        "type": "circle",
+        "source": "ladbscases",
+                "paint": {
+                    'circle-radius': {
+                        "stops": [
+                            [{zoom: 10, value: 0}, 1.66],
+                            [{zoom: 15, value: 0}, 14]
+                          ]
+                    },
+                    'circle-color': '#e9a3c9',
+                    'circle-opacity':.8
+                },
+        "filter":["==","year",2015]
+    });
+    
+     map.addLayer({
+        "id": "2014",
+        "type": "circle",
+        "source": "ladbscases",
+                "paint": {
+                    'circle-radius': {
+                        "stops": [
+                            [{zoom: 10, value: 0}, 1.33],
+                            [{zoom: 15, value: 0}, 12]
+                          ]
+                    },
+                    'circle-color': '#fde0ef',
+                    'circle-opacity':.8
+                },
+        "filter":["==","year",2014]
+    });
+    
+    map.addLayer({
+        "id": "2013",
+        "type": "circle",
+        "source": "ladbscases",
+                "paint": {
+                    'circle-radius': {
+                        "stops": [
+                            [{zoom: 10, value: 0}, 1],
+                            [{zoom: 15, value: 0}, 10]
+                          ]
+                    },
+                    'circle-color': '#f7f7f7',
+                    'circle-opacity':.8
+                },
+        "filter":["==","year",2013]
+    });
+    
+         map.addLayer({
+        "id": "2012",
+        "type": "circle",
+        "source": "ladbscases",
+                "paint": {
+                    'circle-radius': {
+                        "stops": [
+                            [{zoom: 10, value: 0}, .66],
+                            [{zoom: 15, value: 0}, 8]
+                          ]
+                    },
+                    'circle-color': '#e6f5d0',
+                    'circle-opacity':.8
+                },
+        "filter":["==","year",2012]
+    });
+    
+    map.addLayer({
+        "id": "2011",
+        "type": "circle",
+        "source": "ladbscases",
+                "paint": {
+                    'circle-radius': {
+                        "stops": [
+                            [{zoom: 10, value: 0}, .33],
+                            [{zoom: 15, value: 0}, 6]
+                          ]
+                    },
+                    'circle-color': '#a1d76a',
+                    'circle-opacity':.8
+                },
+        "filter":["==","year",2011]
+    });
+    
+            map.addLayer({
+        "id": "2010",
+        "type": "circle",
+        "source": "ladbscases",
+                "paint": {
+                    'circle-radius': {
+                        "stops": [
+                            [{zoom: 10, value: 0}, .33],
+                            [{zoom: 15, value: 0}, 4]
+                          ]
+                    },
+                    'circle-color': '#4d9221',
+                    'circle-opacity':.8
+                },
+        "filter":["==","year",2010]
+    });
+
+    
+    map.on('mousemove', function (e) {
+    var features = map.queryRenderedFeatures(e.point);
+    //console.log(features);
+});
+    
+map.on('click', function (e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['2016','2015','2014','2013','2012','2011','2010'] });
+
+    if (!features.length) {
+        return;
+    }
+    console.log(map.getSource("ladbscases"));
+    var feature = features[0];
+    var popup = new mapboxgl.Popup()
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML(
+            "<h2>"+feature.properties["Case Number"]+"</h2>"+
+            "<p>"+feature.properties["Address House Number"]+" "+feature.properties["Address Street Name"]+" "+feature.properties["Address Street Suffix"]+"</p>"+
+            "<b>Case Type: </b>"+feature.properties["Case Type"]+
+            "<br><b>Date Generated </b>"+feature.properties["Date Case Generated"]+
+            "<br><b>Case Closed: </b>"+feature.properties["Date Case Closed"]+
+            "<br><b>Year: </b>"+feature.properties["year"]
+        )
+        .addTo(map);
+    $("#ladbsbox").html("<iframe id='ladbsframe' src='https://www.ladbsservices2.lacity.org/OnlineServices/PermitReport/CeisDetail?caseNo="+feature.properties["Case Number"]+"'></iframe>")
+});
+    
+map.on('mousemove', function (e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['2016','2015','2014','2013','2012','2011','2010'] });
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+});    
+});
+</script>
+</body>
+</html>

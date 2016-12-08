@@ -41,4 +41,32 @@ An exploration of the case data with data from the LA County Assessor identifyin
 * Converting to geojson file for GIS software (QGIS, ESRI)
  * The Latitude/Longitude attribute was split into two columns, lat and long, for CSV load to GIS Software
  * A new `year` column was created based on `Date Case Generated` attribute, for visualization 
- * `ladbs_code_enforcement.geojson` generated
+ * `ladbs_code_enforcement.geojson` generated | Can be found in this repo
+ 
+### Mapping data
+* An interactive map was made using Mapbox software and base layers to load the `ladbs_code_enforcement.geojson` file
+* Map was color coded by the year a case was reported (2010-2016)
+* Webpage for map was split into two panes for map on left and a iframe to load the [LADBS Permit and Inspection Report](https://www.ladbsservices2.lacity.org/OnlineServices/?service=plr)
+* The `Case Number` attribute is pulled when a user clicks on a marker for JQuery to load ladbs report on that case number.
+### [LIVE MAP](https://cityhubla.github.io/lacity_exploration_14/)
+
+###  Data Inquiries and Comments from Exploration
+* The data seems to have the bulk of the cases in 2016 and decreases dramatically to 2002
+| Year | Count |
+|------|-------|
+| 2002 | 2     |
+| 2003 | 1     |
+| 2005 | 2     |
+| 2008 | 3     |
+| 2009 | 4     |
+| 2010 | 5     |
+| 2011 | 407   |
+| 2012 | 558   |
+| 2013 | 764   |
+| 2014 | 1157  |
+| 2015 | 2129  |
+| 2016 | 4974  |
+
+* The data has the attribute `Status of Case' which all cases are indicated as `O - Open`, there are 108 cases indicated as closed with the `Count of Date Case Closed`
+* Using the map to load up the ladbs case report, many cases (manual inspection of 20 cases) dating back 2 or more years indicate of them being `Under Investigations`
+* Case Types with the `PACE` value have are little on details from LADBS other than Inspector name and phone number. No description is provided.

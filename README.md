@@ -18,7 +18,7 @@ An exploration of the case data with data from the LA County Assessor identifyin
 
 ### Obtaining and cleaning of data
 * Data was downloaded from the City of Los Angeles's Open Data Portal
-* [Original Data (Last Updated 12.5.2016 before export on 12.7.2016)](https://data.lacity.org/A-Safe-City/Building-and-Safety-Code-Enforcement-Case/2uz8-3tj3/data)
+* [Original Data (Last Updated 12.5.2016 before export on 12.7.2016)](https://data.lacity.org/A-Safe-City/Building-and-Safety-Code-Enforcement-Case/2uz8-3tj3/data), can be also downloaded in this repo.
   * Approx. 12,100 rows
 * Filtering necessary attributes.
  * The `Case Type` attribute contains the following ([Description Source Link](https://www.ladbs.org/docs/default-source/forms/administrative/request-to-purchase-pcis-certificate-of-occupancy-and-or-ceis-data.pdf?sfvrsn=7)):
@@ -35,4 +35,10 @@ An exploration of the case data with data from the LA County Assessor identifyin
 | VEIP       | Vehicle Establishment Inspection Program | No      |
 | XXX        | Adult Entertainment                      | No      |
 
- * Data was filtered and saved to this [LINK](https://data.lacity.org/A-Safe-City/ladbs_code_enforcement_filtered_1/8x82-bdqe/data)
+* Data was filtered and saved to this [LINK](https://data.lacity.org/A-Safe-City/ladbs_code_enforcement_filtered_1/8x82-bdqe/data), it can be downloaded in this repo.
+* Data was furthered filtered by removing attributes not needed for this exploration
+ * LADBS Inspection District, GIS Parcel Identification Number, Area Planning Commission
+* Converting to geojson file for GIS software (QGIS, ESRI)
+ * The Latitude/Longitude attribute was split into two columns, lat and long, for CSV load to GIS Software
+ * A new `year` column was created based on `Date Case Generated` attribute, for visualization 
+ * `ladbs_code_enforcement.geojson` generated

@@ -69,9 +69,9 @@
 </div>
 <div id='infobox'>
     <div id="info">
-        <h1>lacity exploration 12</h1>
-        <p>This exploratory map looks at Building and Safety Code Encforcement Cases from 2010-2016. Each circle represents a reported case, with the circle size and color is based on the year generated. A script was made to load permit information from the Los Angeles Building and Safety's Permit and Inspection Report</p>
-        <p>Click on a circle to identify the case and load the LADBS window | <a href="https://github.com/cityhubla/lacity_exploration_12">Code on GITHUB</a></p>
+        <h1>lacity exploration 14</h1>
+        <p>This exploratory map looks at Building and Safety Code Encforcement Cases from 2010-2016. Each circle represents a reported case, with the circle size and color is based on the year generated. A script was made to load case information from the Los Angeles Building and Safety's Permit and Inspection Report</p>
+        <p>Click on a circle to identify the case and load the LADBS window | <a href="https://github.com/cityhubla/lacity_exploration_14">Code and comments on GITHUB</a></p>
         <p>made by <a href="https://twitter.com/theworksla">Omar Ureta</a></p>
     </div>
     <div id="ladbsbox"></div>
@@ -88,7 +88,7 @@ var map = new mapboxgl.Map({
 });
 
 
-var url = 'data/ladbs_enforcement_cases.geojson';
+var url = 'data/ladbs_code_enforcement.geojson';
 map.on('load', function () {
 
     map.addSource('ladbscases', { type: 'geojson', data: url });
@@ -100,7 +100,7 @@ map.on('load', function () {
                     'circle-radius': {
                         "stops": [
                             [{zoom: 10, value: 0}, 2],
-                            [{zoom: 15, value: 0}, 16]
+                            [{zoom: 15, value: 0}, 14]
                           ]
                     },
                     'circle-color': '#c51b7d',
@@ -117,7 +117,7 @@ map.on('load', function () {
                     'circle-radius': {
                         "stops": [
                             [{zoom: 10, value: 0}, 1.66],
-                            [{zoom: 15, value: 0}, 14]
+                            [{zoom: 15, value: 0}, 12]
                           ]
                     },
                     'circle-color': '#e9a3c9',
@@ -134,7 +134,7 @@ map.on('load', function () {
                     'circle-radius': {
                         "stops": [
                             [{zoom: 10, value: 0}, 1.33],
-                            [{zoom: 15, value: 0}, 12]
+                            [{zoom: 15, value: 0}, 10]
                           ]
                     },
                     'circle-color': '#fde0ef',
@@ -151,7 +151,7 @@ map.on('load', function () {
                     'circle-radius': {
                         "stops": [
                             [{zoom: 10, value: 0}, 1],
-                            [{zoom: 15, value: 0}, 10]
+                            [{zoom: 15, value: 0}, 8]
                           ]
                     },
                     'circle-color': '#f7f7f7',
@@ -168,7 +168,7 @@ map.on('load', function () {
                     'circle-radius': {
                         "stops": [
                             [{zoom: 10, value: 0}, .66],
-                            [{zoom: 15, value: 0}, 8]
+                            [{zoom: 15, value: 0}, 6]
                           ]
                     },
                     'circle-color': '#e6f5d0',
@@ -223,7 +223,6 @@ map.on('click', function (e) {
     if (!features.length) {
         return;
     }
-    console.log(map.getSource("ladbscases"));
     var feature = features[0];
     var popup = new mapboxgl.Popup()
         .setLngLat(feature.geometry.coordinates)
@@ -232,7 +231,6 @@ map.on('click', function (e) {
             "<p>"+feature.properties["Address House Number"]+" "+feature.properties["Address Street Name"]+" "+feature.properties["Address Street Suffix"]+"</p>"+
             "<b>Case Type: </b>"+feature.properties["Case Type"]+
             "<br><b>Date Generated </b>"+feature.properties["Date Case Generated"]+
-            "<br><b>Case Closed: </b>"+feature.properties["Date Case Closed"]+
             "<br><b>Year: </b>"+feature.properties["year"]
         )
         .addTo(map);

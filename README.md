@@ -72,6 +72,6 @@ An exploration of the case data with data from the LA County Assessor identifyin
 * The data has the attribute `Status of Case` which all cases are indicated as `O - Open`, there are 108 cases indicated as closed with the `Count of Date Case Closed`
 * Using the map to load up the ladbs case report, many cases (manual inspection of 20 cases) dating back 2 or more years indicate of them being `Under Investigation`
 * Case Types with the `PACE` value have are little on details from LADBS other than Inspector name and phone number. No description is provided.
-* It would be worthwhile to perform a scraping of LADBS case report site to find `substandard orders` which may involve:
+* It would be worthwhile to perform a scraping of LADBS case report site to find `substandard orders` which may involve (or request it to be added to this dataset):
  * Construction Work without required permits
  * Illegal Occupancy

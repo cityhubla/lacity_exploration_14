@@ -35,7 +35,7 @@ An exploration of the case data with data from the LA County Assessor identifyin
 | VEIP       | Vehicle Establishment Inspection Program | No      |
 | XXX        | Adult Entertainment                      | No      |
 
-* Data was filtered and saved to this [LINK](https://data.lacity.org/A-Safe-City/ladbs_code_enforcement_filtered_1/8x82-bdqe/data), it can be downloaded in this repo.
+* Data was filtered and saved to this [LINK](https://data.lacity.org/A-Safe-City/ladbs_code_enforcement_filtered_1/8x82-bdqe/data)
 * Data was furthered filtered by removing attributes not needed for this exploration
  * LADBS Inspection District, GIS Parcel Identification Number, Area Planning Commission
 * Converting to geojson file for GIS software (QGIS, ESRI)
@@ -48,6 +48,7 @@ An exploration of the case data with data from the LA County Assessor identifyin
 * Map was color coded by the year a case was reported (2010-2016)
 * Webpage for map was split into two panes for map on left and a iframe to load the [LADBS Permit and Inspection Report](https://www.ladbsservices2.lacity.org/OnlineServices/?service=plr)
 * The `Case Number` attribute is pulled when a user clicks on a marker for JQuery to load ladbs report on that case number.
+
 ### [LIVE MAP](https://cityhubla.github.io/lacity_exploration_14/)
 
 ###  Data Inquiries and Comments from Exploration

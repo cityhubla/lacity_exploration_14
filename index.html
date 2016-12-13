@@ -66,6 +66,8 @@
     <div><span style='background-color: #e6f5d0'></span>2012</div>
     <div><span style='background-color: #a1d76a'></span>2011</div>
     <div><span style='background-color: #4d9221'></span>2010</div>
+    <h4>Parcel Type</h4>
+    <div><span style='background-color: #4e84c6; border-radius: 0;'></span>Manufacturing</div>
 </div>
 <div id='infobox'>
     <div id="info">
@@ -88,10 +90,23 @@ var map = new mapboxgl.Map({
 });
 
 
-var url = 'data/ladbs_code_enforcement.geojson';
+var ladbsurl = 'data/ladbs_code_enforcement.geojson';
+var assessorurl = 'data/lacity_industrial_assessor2015.geojson';
 map.on('load', function () {
 
-    map.addSource('ladbscases', { type: 'geojson', data: url });
+    map.addSource('ladbscases', { type: 'geojson', data: ladbsurl });
+    map.addSource('2015indparcels', { type: 'geojson', data: assessorurl });
+    
+    map.addLayer({
+        "id": "2015indparcels",
+        "type": "fill",
+        "source": "2015indparcels",
+        "layout": {},
+        "paint": {
+            'fill-color': '#4e84c6',
+            'fill-opacity': 1
+        }
+    });
     map.addLayer({
         "id": "2016",
         "type": "circle",
@@ -194,7 +209,7 @@ map.on('load', function () {
         "filter":["==","year",2011]
     });
     
-            map.addLayer({
+    map.addLayer({
         "id": "2010",
         "type": "circle",
         "source": "ladbscases",

@@ -46,6 +46,7 @@ An exploration of the case data with data from the LA County Assessor identifyin
 ### Mapping data
 * An interactive map was made using Mapbox software and base layers to load the `ladbs_code_enforcement.geojson` file
 * Map was color coded by the year a case was reported (2010-2016)
+* 2015 data from the [LA County Assessor](http://egis3.lacounty.gov/dataportal/2015/03/10/assessor-parcel/) was added to identify industrial uses in the city.
 * Webpage for map was split into two panes for map on left and a iframe to load the [LADBS Permit and Inspection Report](https://www.ladbsservices2.lacity.org/OnlineServices/?service=plr)
 * The `Case Number` attribute is pulled when a user clicks on a marker for JQuery to load ladbs report on that case number.
 

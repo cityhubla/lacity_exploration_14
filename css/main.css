@@ -1,0 +1,69 @@
+body { margin:0; padding:0;font-family: lato;}
+#map { position:absolute; top:0; bottom:0; width:50%; }
+#infobox { position:absolute; top:0; bottom:0; right:0; width:50%; }
+#ladbsframe {position:absolute; width:100%; height:100%}
+#ladbsbox {position:relative; width:99%; height:75%; bottom:0;}
+#mobilebox{display:none}
+#info {
+    position:relative;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, .15);
+    width:90%;
+    height:20%
+}
+
+@media screen and (max-width: 40em) {
+    #info {font-size: xx-small;}
+}
+
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.legend {
+    background-color: #000;
+    border-radius: 3px;
+    bottom: 30px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    color:white;
+    padding: 10px;
+    position: absolute;
+    left: 10px;
+    z-index: 1;
+}
+
+.legend h4 {
+    margin: 0 0 10px;
+}
+
+.legend div span {
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    margin-right: 5px;
+    width: 10px;
+}
+
+@media (max-width:800px) {   
+#map{height:50%; width:100%;
+}  
+#infobox {
+    text-shadow:none;
+    top:50%;
+    bottom:0px;  
+	position: absolute;
+    padding: 0px;
+    width: 100%;
+    overflow:scroll;
+    }
+.leaflet-control{display:none;}
+#info{display:none;}    
+#mobilebox{
+    display:block;
+    padding:5px;
+}
+#ladbsbox{height:100%}
+.legend{display:none;}
+}

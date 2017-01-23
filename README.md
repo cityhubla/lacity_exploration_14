@@ -80,4 +80,4 @@ An exploration of the case data with data from the LA County Assessor identifyin
 ### Like what you see?
 Check out [sectionLA](https://github.com/cityhubla/sectionla/blob/master/README.md), a collection of explorations of LA. The analysis, maps and code behind the explorations contribute to the services I offer as a consultant developing analog and digital tools and visualizatoins for Civic Engagement, Planning, Land Use Development and Public Policy. Think you could use my services? 
 
-Contact me | [Twitter](https://twitter.com/theworksla) | [Email : omaru[at]theworks.la
+Contact me | [Twitter](https://twitter.com/theworksla) | Email : omaru[at]theworks.la | [Website](http://www.theworks.la/)

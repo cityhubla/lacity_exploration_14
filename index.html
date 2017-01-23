@@ -7,57 +7,12 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css' rel='stylesheet' />
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <style>
-        body { margin:0; padding:0; 
-            font-family: lato;}
-        #map { position:absolute; top:0; bottom:0; width:50%; }
-        #infobox { position:absolute; top:0; bottom:0; right:0; width:50%; }
-        #ladbsframe {position:absolute; width:100%; height:100%}
-        #ladbsbox {position:relative; width:99%; height:75%; bottom:0;}
-        #info {
-            position:relative;
-            padding: 25px;
-            background-color: rgba(255, 255, 255, .15);
-            width:90%;
-            height:20%
-        }
-        @media screen and (max-width: 40em) {
-        #info{font-size: xx-small;}
-        }
-        
-        .mapboxgl-popup {
-        max-width: 400px;
-        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    }
-        .legend {
-        background-color: #000;
-        border-radius: 3px;
-        bottom: 30px;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
-        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-        color:white;
-        padding: 10px;
-        position: absolute;
-        left: 10px;
-        z-index: 1;
-        }
+    <link href='css/main.css' rel='stylesheet' type='text/css'>
 
-.legend h4 {
-    margin: 0 0 10px;
-}
-
-.legend div span {
-    border-radius: 50%;
-    display: inline-block;
-    height: 10px;
-    margin-right: 5px;
-    width: 10px;
-}
-    </style>
 </head>
 <body>
 <div id='map'></div>
-<div id='state-legend' class='legend'>
+<div id='legend' class='legend'>
     <h4>Permit Type</h4>
     <div><span style='background-color: #c51b7d'></span>2016</div>
     <div><span style='background-color: #e9a3c9'></span>2015</div>
@@ -72,11 +27,21 @@
 <div id='infobox'>
     <div id="info">
         <h1>lacity exploration 14</h1>
-        <p>This exploratory map looks at Building and Safety Code Enforcement Cases from 2010-2016. Each circle represents a reported case, with the circle size and color is based on the year generated. Industrial property uses are shown in blue using data from the 2015 LA County Assessor dataset. A script was made to load case information from the Los Angeles Building and Safety's Permit and Inspection Report</p>
+<<<<<<< HEAD
+=======
+        <p>This exploratory map looks at Building and Safety Code Enforcement Cases from 2010-2016. Each circle represents a reported case, with the circle size and color is based on the year generated. Industrial property uses are shown in blue using data from the 2015 LA County Assessor dataset. A script was made to load case information from the Los Angeles Building and Safety's Permit and Inspection Report.</p>
         <p>Click on a circle to identify the case and load the LADBS window | <a href="https://github.com/cityhubla/lacity_exploration_14">Code and comments on GITHUB</a></p>
         <p>made by <a href="https://twitter.com/theworksla">Omar Ureta</a></p>
     </div>
-    <div id="ladbsbox"></div>
+    <div id="ladbsbox">
+    <div id="mobilebox">
+        <h1>lacity exploration 14</h1>
+>>>>>>> refs/remotes/origin/master
+        <p>This exploratory map looks at Building and Safety Code Enforcement Cases from 2010-2016. Each circle represents a reported case, with the circle size and color is based on the year generated. Industrial property uses are shown in blue using data from the 2015 LA County Assessor dataset. A script was made to load case information from the Los Angeles Building and Safety's Permit and Inspection Report</p>
+        <p>Click on a circle to identify the case and load the LADBS window | <a href="https://github.com/cityhubla/lacity_exploration_14">Code and comments on GITHUB</a></p>
+        <p>made by <a href="https://twitter.com/theworksla">Omar Ureta</a></p>
+        </div>
+    </div>
     </div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiY3J1emluNzN2dyIsImEiOiJjaW80MHJvNzgwMWcwdmFrams0OHAxaWozIn0.6TXveIiYaYPFdf8QTO6Ssw';

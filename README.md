@@ -76,3 +76,8 @@ An exploration of the case data with data from the LA County Assessor identifyin
 * It would be worthwhile to perform a scraping of LADBS case report site to find `substandard orders` which may involve (or request it to be added to this dataset):
  * Construction Work without required permits
  * Illegal Occupancy
+
+### Like what you see?
+Check out [sectionLA](https://github.com/cityhubla/sectionla/blob/master/README.md) a collection of explorations of LA. The analysis, maps and code behind the explorations contribute to the services I offer as a consultant developing analog and digital tools and visualizatoins for Civic Engagement, Planning, Land Use Development and Public Policy. Think you could use my server? 
+
+Contact me | [Twitter](https://twitter.com/theworksla) | [Email : omaru[at]theworks.la

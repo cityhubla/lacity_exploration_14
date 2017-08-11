@@ -1,16 +1,53 @@
-body { margin:0; padding:0;font-family: lato;}
+body { margin:0; padding:0;font-family: lato; }
 #map { position:absolute; top:0; bottom:0; width:50%; }
-#infobox { position:absolute; top:0; bottom:0; right:0; width:50%; }
-#ladbsframe {position:absolute; width:100%; height:100%}
-#ladbsbox {position:relative; width:99%; height:75%; bottom:0;}
+#infobox { 
+    position:absolute; 
+    top:0; bottom:0; 
+    right:0; 
+    width:50%;
+    height:100%;
+    background-color:#525151;
+    color:white;}
+#ladbsframe {position:relative; width:100%; height:100%}
+#ladbsbox {position:relative; width:100%; height:50%; bottom:0;}
 #mobilebox{display:none}
 #info {
     position:relative;
-    padding: 25px;
-    background-color: rgba(255, 255, 255, .15);
-    width:90%;
-    height:20%
+    width:100%;
+    height:50%;
 }
+
+.legend-overlay {
+    font-size:0;
+    position: relative;
+    width: 100%;
+    left: 0;
+}
+.legend-overlay button {
+    font-family: Lato;
+    font-weight: bold;
+    display: inline-block;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    width: auto !important;
+    color:#525151;
+}
+.legend-overlay button.active {
+    opacity:0.25;
+}
+
+.legend-overlay button:hover {
+    box-shadow:inset 0 0 0 3px rgba(0, 0, 0, 0.10);
+}
+
+#t2016 {background-color:#c51b7d}
+#t2015 {background-color:#e9a3c9}
+#t2014 {background-color:#fde0ef}
+#t2013 {background-color:#f7f7f7}
+#t2012 {background-color:#e6f5d0}
+#t2011 {background-color:#a1d76a}
+#t2010 {background-color:#4d9221}
 
 @media screen and (max-width: 40em) {
     #info {font-size: xx-small;}
@@ -20,6 +57,7 @@ body { margin:0; padding:0;font-family: lato;}
     max-width: 400px;
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
+
 
 .legend {
     background-color: #000;
@@ -50,6 +88,7 @@ body { margin:0; padding:0;font-family: lato;}
 #map{height:50%; width:100%;
 }  
 #infobox {
+
     text-shadow:none;
     top:50%;
     bottom:0px;  

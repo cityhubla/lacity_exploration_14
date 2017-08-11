@@ -12,24 +12,22 @@
 </head>
 <body>
 <div id='map'></div>
-<div id='legend' class='legend'>
-    <h4>Permit Type</h4>
-    <div><span style='background-color: #c51b7d'></span>2016</div>
-    <div><span style='background-color: #e9a3c9'></span>2015</div>
-    <div><span style='background-color: #fde0ef'></span>2014</div>
-    <div><span style='background-color: #f7f7f7'></span>2013</div>
-    <div><span style='background-color: #e6f5d0'></span>2012</div>
-    <div><span style='background-color: #a1d76a'></span>2011</div>
-    <div><span style='background-color: #4d9221'></span>2010</div>
-    <h4>Parcel Type</h4>
-    <div><span style='background-color: #4e84c6; border-radius: 0;'></span>Manufacturing</div>
-</div>
 <div id='infobox'>
     <div id="info">
+            <div class='legend-overlay'>
+            <button id='t2016' class='button' onclick='changelayer(2016)'>2016</button>
+            <button id='t2015' class='button' onclick='changelayer(2015)'>2015</button>
+            <button id='t2014' class='button' onclick='changelayer(2014)'>2014</button>
+            <button id='t2013' class='button' onclick='changelayer(2013)'>2013</button>
+            <button id='t2012' class='button' onclick='changelayer(2012)'>2012</button>
+            <button id='t2011' class='button' onclick='changelayer(2011)'>2011</button>
+            <button id='t2010' class='button' onclick='changelayer(2010)'>2010</button>
+            </div>
         <h1>lacity exploration 14</h1>
         <p>This exploratory map looks at Building and Safety Code Enforcement Cases from 2010-2016. Each circle represents a reported case, with the circle size and color is based on the year generated. Industrial property uses are shown in blue using data from the 2015 LA County Assessor dataset. A script was made to load case information from the Los Angeles Building and Safety's Permit and Inspection Report.</p>
         <p>Click on a circle to identify the case and load the LADBS window | <a href="https://github.com/cityhubla/lacity_exploration_14">Code and comments on GITHUB</a></p>
         <p>made by <a href="https://twitter.com/theworksla">Omar Ureta</a></p>
+
     </div>
     <div id="ladbsbox">
     <div id="mobilebox">
@@ -51,27 +49,57 @@ var map = new mapboxgl.Map({
     hash:true
 });
 
+<<<<<<< HEAD
+=======
+    //span style='background-color: #4e84c6; border-radius: 0;'></span>Manufacturing
+
+>>>>>>> refs/remotes/origin/master
 var ladbsurl = 'data/ladbs_code_enforcement.geojson';
 var assessorurl = 'data/lacity_industrial_assessor2015.geojson';
 map.on('load', function () {
 
     map.addSource('ladbscases', { type: 'geojson', data: ladbsurl });
     map.addSource('2015indparcels', { type: 'geojson', data: assessorurl });
-    
+
     map.addLayer({
         "id": "2015indparcels",
         "type": "fill",
         "source": "2015indparcels",
-        "layout": {},
+        "layout": {visibility:'visible'},
         "paint": {
             'fill-color': '#4e84c6',
             'fill-opacity': 1
         }
+    },'cpa-centroid');
+    
+    map.addLayer({
+        "id": "highlightparcel",
+        "type": "fill",
+        "source": "2015indparcels",
+        "layout": {visibility:'visible'},
+        "paint": {
+            'fill-color': '#FFF',
+            'fill-opacity': .5
+        },
+        "filter":["==",'AIN_Text','00']
     });
+    
+    map.addLayer({
+        "id": "2015indparcels_outline",
+        "type": "line",
+        "source": "2015indparcels",
+        "layout": {visibility:'visible'},
+        "paint": {
+            'line-color': '#3e3d3c',
+            'line-width':.25
+        }
+    },'cpa-centroid');
+    
     map.addLayer({
         "id": "2016",
         "type": "circle",
         "source": "ladbscases",
+        "layout": {visibility:'visible'},
                 "paint": {
                     'circle-radius': {
                         "stops": [
@@ -83,12 +111,13 @@ map.on('load', function () {
                     'circle-opacity':.8
                 },
         "filter":["==","year",2016]
-    });
+    },'cpa-centroid');
     
     map.addLayer({
         "id": "2015",
         "type": "circle",
         "source": "ladbscases",
+        "layout": {visibility:'visible'},
                 "paint": {
                     'circle-radius': {
                         "stops": [
@@ -100,12 +129,13 @@ map.on('load', function () {
                     'circle-opacity':.8
                 },
         "filter":["==","year",2015]
-    });
+    },'cpa-centroid');
     
      map.addLayer({
         "id": "2014",
         "type": "circle",
         "source": "ladbscases",
+        "layout": {visibility:'visible'},
                 "paint": {
                     'circle-radius': {
                         "stops": [
@@ -117,12 +147,13 @@ map.on('load', function () {
                     'circle-opacity':.8
                 },
         "filter":["==","year",2014]
-    });
+    },'cpa-centroid');
     
     map.addLayer({
         "id": "2013",
         "type": "circle",
         "source": "ladbscases",
+        "layout": {visibility:'visible'},
                 "paint": {
                     'circle-radius': {
                         "stops": [
@@ -134,12 +165,13 @@ map.on('load', function () {
                     'circle-opacity':.8
                 },
         "filter":["==","year",2013]
-    });
+    },'cpa-centroid');
     
          map.addLayer({
         "id": "2012",
         "type": "circle",
         "source": "ladbscases",
+        "layout": {visibility:'visible'},
                 "paint": {
                     'circle-radius': {
                         "stops": [
@@ -151,12 +183,13 @@ map.on('load', function () {
                     'circle-opacity':.8
                 },
         "filter":["==","year",2012]
-    });
+    },'cpa-centroid');
     
     map.addLayer({
         "id": "2011",
         "type": "circle",
         "source": "ladbscases",
+        "layout": {visibility:'visible'},
                 "paint": {
                     'circle-radius': {
                         "stops": [
@@ -168,12 +201,13 @@ map.on('load', function () {
                     'circle-opacity':.8
                 },
         "filter":["==","year",2011]
-    });
+    },'cpa-centroid');
     
     map.addLayer({
         "id": "2010",
         "type": "circle",
         "source": "ladbscases",
+        "layout": {visibility:'visible'},
                 "paint": {
                     'circle-radius': {
                         "stops": [
@@ -185,12 +219,13 @@ map.on('load', function () {
                     'circle-opacity':.8
                 },
         "filter":["==","year",2010]
-    });
+    },'cpa-centroid');
+
 
     
-    map.on('mousemove', function (e) {
-    var features = map.queryRenderedFeatures(e.point);
-    //console.log(features);
+map.on('mousemove', function (e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['2015indparcels'] });
+    map.setFilter('highlightparcel',['==','AIN_Text',features[0].properties.AIN_Text])
 });
     
 map.on('click', function (e) {
@@ -218,6 +253,12 @@ map.on('mousemove', function (e) {
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });    
 });
+    
+var changelayer= function(year){
+    if (map.getLayoutProperty(year,'visibility')=='visible'){map.setLayoutProperty(year, 'visibility', 'none'); $("#t"+year).toggleClass('active')}
+    else {map.setLayoutProperty(year, 'visibility', 'visible');$("#t"+year).toggleClass('active')}
+}
+
 </script>
 </body>
 </html>
